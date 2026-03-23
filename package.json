@@ -1,0 +1,17 @@
+{
+  "name": "merge-kingdom",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "game": "cd apps/game && npx expo start",
+    "game:ios": "cd apps/game && npx expo run:ios",
+    "game:android": "cd apps/game && npx expo run:android"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
