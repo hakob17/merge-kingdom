@@ -9,7 +9,9 @@
   "scripts": {
     "game": "cd apps/game && npx expo start",
     "game:ios": "cd apps/game && npx expo run:ios",
-    "game:android": "cd apps/game && npx expo run:android"
+    "game:android": "cd apps/game && npx expo run:android",
+    "api": "cd apps/api && npm run dev",
+    "api:migrate": "cd apps/api && npm run db:migrate"
   },
   "engines": {
     "node": ">=18.0.0"
