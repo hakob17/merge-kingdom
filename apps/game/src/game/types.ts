@@ -1,4 +1,4 @@
-import type { ChainType } from "./constants";
+import type { ChainType, ZoneId } from "./constants";
 
 export interface MergeItem {
   id: string;
@@ -19,11 +19,44 @@ export interface Building {
   name: string;
   tier: number;
   income: number;
+  zoneId: ZoneId;
+  slotIndex: number;
   builtAt: number; // timestamp
 }
 
-export interface KingdomState {
+export interface KingdomZone {
+  id: ZoneId;
   buildings: Building[];
+  unlocked: boolean;
+}
+
+export interface KingdomState {
+  zones: KingdomZone[];
   totalCoinsEarned: number;
   lastCollectedAt: number; // timestamp for idle calc
+}
+
+export interface CollectionEntry {
+  chain: ChainType;
+  tier: number;
+  discovered: boolean;
+  discoveredAt: number | null;
+}
+
+export interface PlayerProfile {
+  id: string;
+  name: string;
+  level: number;
+  xp: number;
+  coins: number;
+  gems: number;
+  createdAt: number;
+}
+
+export interface GameState {
+  board: BoardState;
+  kingdom: KingdomState;
+  player: PlayerProfile;
+  collection: CollectionEntry[];
+  idleIncomePerSecond: number;
 }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { Canvas, RoundedRect, Fill } from "@shopify/react-native-skia";
-import { BOARD_SIZE, CELL_SIZE, CELL_GAP } from "@/game/constants";
 import { useGame } from "@/game/store";
 import { OfflineEarningsPopup } from "@/components/OfflineEarningsPopup";
 import { CollectionBook } from "@/screens/CollectionBook";
 import { KingdomView } from "@/screens/KingdomView";
+import MergeBoard from "@/game/components/MergeBoard";
+import GameHUD from "@/game/components/GameHUD";
+import KingdomZone from "@/game/components/KingdomZone";
 
 type Screen = "board" | "collection" | "kingdom";
 
@@ -23,44 +24,15 @@ export default function GameScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Stats bar */}
-      <View style={styles.statsBar}>
-        <Text style={styles.stat}>Lv. {state.player.level}</Text>
-        <Text style={styles.stat}>{state.player.coins.toLocaleString()} coins</Text>
-        <Text style={styles.stat}>{state.idleIncomePerSecond}/s</Text>
-      </View>
+      <GameHUD />
 
       <Text style={styles.header}>Merge Board</Text>
 
-      <View style={styles.boardContainer}>
-        <Canvas
-          style={{
-            width: BOARD_SIZE * (CELL_SIZE + CELL_GAP) + CELL_GAP,
-            height: BOARD_SIZE * (CELL_SIZE + CELL_GAP) + CELL_GAP,
-          }}
-        >
-          <Fill color="#16213e" />
-          {Array.from({ length: BOARD_SIZE * BOARD_SIZE }).map((_, i) => {
-            const row = Math.floor(i / BOARD_SIZE);
-            const col = i % BOARD_SIZE;
-            const x = CELL_GAP + col * (CELL_SIZE + CELL_GAP);
-            const y = CELL_GAP + row * (CELL_SIZE + CELL_GAP);
-            return (
-              <RoundedRect
-                key={i}
-                x={x}
-                y={y}
-                width={CELL_SIZE}
-                height={CELL_SIZE}
-                r={8}
-                color="#0f3460"
-              />
-            );
-          })}
-        </Canvas>
-      </View>
+      <MergeBoard />
 
-      <Text style={styles.hint}>Drag items to merge them!</Text>
+      <Text style={styles.hint}>Tap empty cells to spawn {"\u00B7"} Drag to merge</Text>
+
+      <KingdomZone />
 
       {/* Bottom navigation */}
       <View style={styles.navBar}>
@@ -96,32 +68,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#1a1a2e",
     paddingTop: 60,
   },
-  statsBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-  },
-  stat: {
-    color: "#DAA520",
-    fontSize: 14,
-    fontWeight: "600",
-  },
   header: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#e94560",
-    marginBottom: 24,
-  },
-  boardContainer: {
-    borderRadius: 16,
-    overflow: "hidden",
+    marginBottom: 16,
+    marginTop: 8,
   },
   hint: {
-    marginTop: 24,
-    fontSize: 14,
-    color: "#c4c4c4",
+    marginTop: 12,
+    fontSize: 12,
+    color: "#666",
   },
   navBar: {
     flexDirection: "row",
