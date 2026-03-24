@@ -1,0 +1,33 @@
+{
+  "ios": {
+    "appName": "Merge Kingdom",
+    "subtitle": "Build & Merge Your Empire",
+    "category": "Games",
+    "subcategory": "Puzzle",
+    "description": "Merge materials, build your kingdom, and earn coins — even while you sleep!\n\nMerge Kingdom combines the satisfying drag-and-merge gameplay you love with idle city building. Start with a humble village and grow it into a grand empire.\n\n• MERGE — Drag identical items together to create something better. Wood becomes planks, planks become beams, and beams become cabins!\n\n• BUILD — Use merged materials to construct buildings in your kingdom. Houses, workshops, manors, and castles — each earning coins per second.\n\n• EARN OFFLINE — Your buildings keep earning while you're away. Come back to collect your treasure!\n\n• COMPETE — Weekly Race events pit your merge speed against players worldwide. Climb the leaderboard for exclusive rewards.\n\n• COLLECT — Discover all merge chains and fill your Collection Book. Can you find every item?\n\n• RAID — Send troops to raid other players' kingdoms for bonus loot. Build your defenses or strike first!\n\n• BATTLE PASS — Unlock free and premium rewards across 30 tiers each season.\n\nDownload now and start building your Merge Kingdom!",
+    "keywords": "merge,kingdom,idle,builder,puzzle,casual,city,tycoon,offline",
+    "promotionalText": "New Season 1 Battle Pass with exclusive kingdom skins!",
+    "privacyPolicyUrl": "https://paperclip.ing/privacy",
+    "supportUrl": "https://paperclip.ing/support",
+    "ageRating": "4+",
+    "contentDescriptors": {
+      "inAppPurchases": true,
+      "adsIntegration": true
+    }
+  },
+  "screenshots": {
+    "required": [
+      "6.7-inch (iPhone 15 Pro Max) — 1290 x 2796",
+      "6.5-inch (iPhone 14 Plus) — 1284 x 2778",
+      "5.5-inch (iPhone 8 Plus) — 1242 x 2208",
+      "12.9-inch (iPad Pro) — 2048 x 2732"
+    ],
+    "scenes": [
+      "Merge board with active cascade merge animation",
+      "Kingdom view with buildings generating income",
+      "Collection book showing discovered items",
+      "Weekly Race leaderboard",
+      "Offline earnings welcome back popup"
+    ]
+  }
+}
