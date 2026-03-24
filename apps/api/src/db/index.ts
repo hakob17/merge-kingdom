@@ -4,11 +4,7 @@ import * as schema from "./schema.js";
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
-if (!DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is required");
-}
-
-const pool = new pg.Pool({ connectionString: DATABASE_URL });
-export const db = drizzle(pool, { schema });
-export type Database = typeof db;
+const pool = DATABASE_URL ? new pg.Pool({ connectionString: DATABASE_URL }) : null;
+export const db = pool ? drizzle(pool, { schema }) : null;
+export type Database = NonNullable<typeof db>;
 export { schema };

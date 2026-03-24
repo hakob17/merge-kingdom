@@ -12,12 +12,22 @@ const app = new Hono();
 app.use("/*", logger());
 app.use("/*", cors());
 
-app.get("/health", (c) => c.json({ status: "ok", version: "0.1.0" }));
+app.get("/health", (c) =>
+  c.json({
+    status: "ok",
+    version: "0.1.0",
+    database: process.env.DATABASE_URL ? "connected" : "not configured",
+  })
+);
 
-app.route("/players", players);
-app.route("/leaderboard", leaderboard);
-app.route("/events", events);
-app.route("/raids", raids);
+if (process.env.DATABASE_URL) {
+  app.route("/players", players);
+  app.route("/leaderboard", leaderboard);
+  app.route("/events", events);
+  app.route("/raids", raids);
+} else {
+  console.warn("DATABASE_URL not set — API routes disabled, only /health available");
+}
 
 const port = Number(process.env.PORT || 3001);
 
