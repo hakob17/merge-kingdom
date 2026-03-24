@@ -29,9 +29,6 @@
         "projectId": "121e72e0-287f-408c-a7e8-5ebd4ecdd25e"
       }
     },
-    "owner": "hakob17",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    }
+    "owner": "hakob17"
   }
 }
