@@ -11,7 +11,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.hakob17.mergekingdom"
+      "bundleIdentifier": "com.hakob17.mergekingdom",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,8 +23,7 @@
       "package": "com.hakob17.mergekingdom"
     },
     "plugins": [
-      "expo-router",
-      "@shopify/react-native-skia"
+      "expo-router"
     ],
     "scheme": "merge-kingdom",
     "extra": {
