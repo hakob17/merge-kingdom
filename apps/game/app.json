@@ -11,13 +11,13 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.paperclip.mergekingdom"
+      "bundleIdentifier": "com.hakob17.mergekingdom"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#1a1a2e"
       },
-      "package": "com.paperclip.mergekingdom"
+      "package": "com.hakob17.mergekingdom"
     },
     "plugins": [
       "expo-router",
