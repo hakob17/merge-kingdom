@@ -2,7 +2,7 @@
  * Simple migration script — creates tables if they don't exist.
  * For production, use drizzle-kit push or generate migrations.
  */
-import { neon } from "@neondatabase/serverless";
+import pg from "pg";
 
 const DATABASE_URL = process.env.DATABASE_URL;
 if (!DATABASE_URL) {
@@ -10,7 +10,7 @@ if (!DATABASE_URL) {
   process.exit(1);
 }
 
-const sql = neon(DATABASE_URL);
+const client = new pg.Client({ connectionString: DATABASE_URL });
 
 const migration = `
 CREATE TABLE IF NOT EXISTS players (
@@ -67,9 +67,11 @@ CREATE INDEX IF NOT EXISTS leaderboard_score_idx ON leaderboard(score);
 `;
 
 async function main() {
+  await client.connect();
   console.log("Running migrations...");
-  await sql(migration);
+  await client.query(migration);
   console.log("Migrations complete.");
+  await client.end();
 }
 
 main().catch((err) => {
