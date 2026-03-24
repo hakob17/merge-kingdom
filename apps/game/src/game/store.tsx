@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect, useRef, useCallback } from "react";
 import { AppState, AppStateStatus } from "react-native";
-import { calculateIdleIncome } from "@merge-kingdom/shared";
+import { calculateIdleIncome } from "../shared";
 import {
   BUILDINGS,
   KINGDOM_ZONES,
