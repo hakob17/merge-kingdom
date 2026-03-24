@@ -4,11 +4,13 @@ import { useGame } from "@/game/store";
 import { OfflineEarningsPopup } from "@/components/OfflineEarningsPopup";
 import { CollectionBook } from "@/screens/CollectionBook";
 import { KingdomView } from "@/screens/KingdomView";
+import { Shop } from "@/screens/Shop";
+import { BattlePassScreen } from "@/screens/BattlePassScreen";
 import MergeBoard from "@/game/components/MergeBoard";
 import GameHUD from "@/game/components/GameHUD";
 import KingdomZone from "@/game/components/KingdomZone";
 
-type Screen = "board" | "collection" | "kingdom";
+type Screen = "board" | "collection" | "kingdom" | "shop" | "battlepass";
 
 export default function GameScreen() {
   const { state, offlineEarnings, dismissOfflineEarnings } = useGame();
@@ -20,6 +22,14 @@ export default function GameScreen() {
 
   if (activeScreen === "kingdom") {
     return <KingdomView onClose={() => setActiveScreen("board")} />;
+  }
+
+  if (activeScreen === "shop") {
+    return <Shop onClose={() => setActiveScreen("board")} />;
+  }
+
+  if (activeScreen === "battlepass") {
+    return <BattlePassScreen onClose={() => setActiveScreen("board")} />;
   }
 
   return (
@@ -47,6 +57,18 @@ export default function GameScreen() {
           onPress={() => setActiveScreen("collection")}
         >
           <Text style={styles.navButtonText}>Collection</Text>
+        </Pressable>
+        <Pressable
+          style={styles.navButton}
+          onPress={() => setActiveScreen("shop")}
+        >
+          <Text style={styles.navButtonText}>Shop</Text>
+        </Pressable>
+        <Pressable
+          style={styles.navButton}
+          onPress={() => setActiveScreen("battlepass")}
+        >
+          <Text style={styles.navButtonText}>Pass</Text>
         </Pressable>
       </View>
 
@@ -84,12 +106,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     position: "absolute",
     bottom: 40,
-    gap: 16,
+    gap: 8,
   },
   navButton: {
     backgroundColor: "#16213e",
-    paddingHorizontal: 24,
-    paddingVertical: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "#e94560",

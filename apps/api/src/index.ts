@@ -4,6 +4,7 @@ import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import players from "./routes/players.js";
 import leaderboard from "./routes/leaderboard.js";
+import events from "./routes/events.js";
 
 const app = new Hono();
 
@@ -14,6 +15,7 @@ app.get("/health", (c) => c.json({ status: "ok", version: "0.1.0" }));
 
 app.route("/players", players);
 app.route("/leaderboard", leaderboard);
+app.route("/events", events);
 
 const port = Number(process.env.PORT || 3001);
 
